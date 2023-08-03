@@ -1,3 +1,5 @@
+# NextAuth.js sample project with Next.js App Router
+
 > The example repository is maintained from a [monorepo](https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs). Pull Requests should be opened against [`nextauthjs/next-auth`](https://github.com/nextauthjs/next-auth).
 
 <p align="center">
@@ -70,22 +72,24 @@ For more information about setting up a database, please check out the following
 
 ### 3. Configure Authentication Providers
 
-1. Review and update options in `pages/api/auth/[...nextauth].js` as needed.
+1. Review and update options in `app/api/auth/options.ts` as needed.
 
 2. When setting up OAuth, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
 
-e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
+e.g. For Google OAuth you would use: `https://localhost:8080/api/auth/callback/google`
 
 A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/configuration/providers/oauth
 
 3. You can also choose to specify an SMTP server for passwordless sign in via email.
+
+NOTE: The callback url should be set with local HTTPS server endpoint ( `https://localhost:8080/` as above) in IdP settings.
 
 ### 4. Start the application
 
 To run your site locally, use:
 
 ```
-npm run dev
+npm run dev-ssl
 ```
 
 To run it in production mode, use:
@@ -94,6 +98,9 @@ To run it in production mode, use:
 npm run build
 npm run start
 ```
+
+NOTE: For local development, you should configure local HTTPS server with [local-ssl-proxy](https://www.npmjs.com/package/local-ssl-proxy).
+cf. https://github.com/vercel/next.js/discussions/10935#discussioncomment-1540436
 
 ### 5. Preparing for Production
 
