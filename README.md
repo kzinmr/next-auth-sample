@@ -86,7 +86,7 @@ NOTE: The callback url should be set with local HTTPS server endpoint ( `https:/
 
 ### 4. Start the application
 
-To run your site locally with SSH, use:
+To run your site locally, use:
 
 ```
 npm run dev-ssl
